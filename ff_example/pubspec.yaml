@@ -1,0 +1,25 @@
+name: ff_example
+description: Flutter Framework All features example project
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+#  Flutter Framework Dependencies
+  flutter_frame:
+    path: ../flutter_frame
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
