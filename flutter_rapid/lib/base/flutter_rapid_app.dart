@@ -20,7 +20,7 @@ class FlutterRapidApp extends StatelessWidget {
   Future<FlutterRapidApp> bStart(RapidSystemConfig sysConf) async {
     WidgetsFlutterBinding.ensureInitialized();
     _sysConf = sysConf;
-    _bStartLogicalDependencies();
+    await _bStartLogicalDependencies();
     _loadEnvConfig();
     await _miscellaneousInit();
     await _sysConf.onAppStartup();
@@ -65,13 +65,13 @@ class FlutterRapidApp extends StatelessWidget {
   }
 
   Future<void> _miscellaneousInit() async {
-    globalStateLogic.availableLocal = _sysConf.availableLocal;
     RConsole.enableLog = _envConfig.enableLog;
     RConsole.logLevel = _envConfig.logLevel;
   }
 
   @override
   Widget build(BuildContext context) {
+    globalStateLogic.availableLocal = _sysConf.availableLocal;
     return _getUI(context);
   }
 

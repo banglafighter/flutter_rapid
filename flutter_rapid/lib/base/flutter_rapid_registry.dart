@@ -1,7 +1,7 @@
 import 'package:fr_core/rapid_view.dart';
 
 class FlutterRapidRegistry {
-  static const Map<String, RapidView> _viewRegistry = {};
+  static final Map<String, RapidView> _viewRegistry = {};
 
   static void addViewToRegistry(RapidView rapidView) {
     if (!_viewRegistry.containsKey(rapidView.getRouteName())) {
