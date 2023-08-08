@@ -11,6 +11,20 @@ dependencies:
   flutter:
     sdk: flutter
 
+# Nested Package Dependencies
+  fr_core:
+    path: ../fr_core
+  fr_ui:
+    path: ../fr_ui
+  fr_notify:
+    path: ../fr_notify
+  fr_nav:
+    path: ../fr_nav
+  fr_http:
+    path: ../fr_http
+  fr_common:
+    path: ../fr_common
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
