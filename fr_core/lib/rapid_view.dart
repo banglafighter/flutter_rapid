@@ -5,7 +5,7 @@ abstract class RapidBasicView<T> extends GetView<T> {
   const RapidBasicView({Key? key}) : super(key: key);
 }
 
-abstract class RapidView<T> extends GetView<T> {
+abstract class RapidView<T> extends RapidBasicView<T> {
   const RapidView({Key? key}) : super(key: key);
 
   void loadDependentLogics();
