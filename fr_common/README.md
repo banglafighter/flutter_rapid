@@ -1,0 +1,1 @@
+# Flutter Rapid Common Functionality (fr_common)

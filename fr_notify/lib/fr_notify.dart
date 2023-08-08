@@ -1,0 +1,1 @@
+library fr_notify;

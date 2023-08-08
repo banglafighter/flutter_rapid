@@ -1,0 +1,4 @@
+
+
+== File Naming
+* Package name must start with *fr*

@@ -1,0 +1,1 @@
+# Flutter Rapid HTTP Connector (fr_http)
