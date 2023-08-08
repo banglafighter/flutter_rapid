@@ -1,2 +1,2 @@
-# Flutter Framework (flutter_frame)
-Flutter Framework for Rapid Development
+# Flutter Rapid Development Framework (flutter_rapid)
+Flutter Rapid is a Flutter Framework for Rapid Development
