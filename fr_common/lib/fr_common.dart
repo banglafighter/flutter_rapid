@@ -1,7 +1,4 @@
 library fr_common;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'log/rapid_log_enum.dart';
+export 'log/rapid_console_log.dart';
