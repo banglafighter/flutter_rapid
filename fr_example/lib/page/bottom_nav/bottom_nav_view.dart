@@ -1,5 +1,7 @@
 import 'package:flutter_rapid/flutter_rapid.dart';
 import 'package:fr_example/page/home/home_view.dart';
+import '../external/external_view.dart';
+import '../notify/notify_view.dart';
 import '../settings/settings_view.dart';
 import 'bottom_nav_i18n.dart';
 import 'bottom_nav_logic.dart';
@@ -18,10 +20,22 @@ class BottomNavView extends RapidView<BottomNavLogic> {
         label: 'Home',
       ),
       BottomNavItem(
+        routeName: NotifyView.routeName,
+        icon: const Icon(Icons.notifications),
+        label: 'Notify',
+      ),
+      BottomNavItem(
         routeName: SettingsView.routeName,
         icon: const Icon(Icons.settings),
         label: 'Settings',
-      )
+      ),
+      BottomNavItem(
+        routeName: ExternalView.routeName,
+        icon: const Icon(Icons.explore),
+        label: 'External',
+        enableBackInNav: true,
+        enableParentRouteKey: false,
+      ),
     ];
     return items;
   }
@@ -34,7 +48,7 @@ class BottomNavView extends RapidView<BottomNavLogic> {
         initialRoute: HomeView.routeName,
       ),
       bottomNavigationBar: BottomNavManager(
-        navType: BottomNavType.material,
+        navType: BottomNavType.convex,
         items: getNavItems(),
         parentRouteKey: 12,
       ),
