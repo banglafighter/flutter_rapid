@@ -11,6 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  convex_bottom_bar: ^3.2.0
+  fr_core:
+    path: ../fr_core
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
