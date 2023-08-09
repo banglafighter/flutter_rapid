@@ -29,20 +29,14 @@ class BottomNavView extends RapidView<BottomNavLogic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Bottom Navigation"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("View Body Text"),
-          ],
-        ),
+      body: RapidNavigatorManager(
+        routeKey: Get.nestedKey(12),
+        initialRoute: HomeView.routeName,
       ),
       bottomNavigationBar: BottomNavManager(
-        navType: BottomNavType.material,
+        navType: BottomNavType.convex,
         items: getNavItems(),
+        parentRouteKey: 12,
       ),
     );
   }

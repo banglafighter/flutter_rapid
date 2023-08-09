@@ -9,8 +9,8 @@ class FlutterRapidRegistry {
     }
   }
 
-  static RapidView? getView(String routeName) {
-    if (_viewRegistry.containsKey(routeName)) {
+  static RapidView? getView(String? routeName) {
+    if (routeName != null && _viewRegistry.containsKey(routeName)) {
       return _viewRegistry[routeName];
     }
     return null;

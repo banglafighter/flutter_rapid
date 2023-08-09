@@ -12,7 +12,7 @@ class BottomNavManager extends StatelessWidget {
   final RxInt _currentIndex = 0.obs;
   final bool autoNavigation;
   final bool enableBackInNav;
-  int? parentRouteKey;
+  final int? parentRouteKey;
 
   BottomNavManager({
     this.navType = BottomNavType.material,
