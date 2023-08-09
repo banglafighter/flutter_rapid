@@ -17,7 +17,107 @@ class NotifyView extends RapidView<NotifyLogic> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Notify"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrElevatedButton(
+                  onPressed: () {
+                    RapidNotify.success("Operation Successful");
+                  },
+                  name: "Success".tr,
+                ),
+                FrElevatedButton(
+                  onPressed: () {
+                    RapidNotify.error("Operation Failed");
+                  },
+                  name: "Error".tr,
+                ),
+                FrElevatedButton(
+                  onPressed: () {
+                    RapidNotify.info("Please don't do this in future");
+                  },
+                  name: "Info".tr,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrElevatedButton(
+                  name: "Confirm",
+                  onPressed: () {
+                    RapidNotify.confirmDialog(
+                      onConfirm: () {
+                        RapidNotify.success("Operation Confirmed");
+                      },
+                    );
+                  },
+                ),
+                FrElevatedButton(
+                  name: "Simple",
+                  onPressed: () {
+                    RapidNotify.dialog(
+                        message: "This is example message for you. You may read this message or close the dialog.");
+                  },
+                ),
+                FrElevatedButton(
+                  name: "No Close",
+                  onPressed: () {
+                    RapidNotify.dialog(
+                      message: "This is example message for you. You may read this message or close the dialog.",
+                      closButton: false,
+                    );
+                  },
+                ),
+                FrElevatedButton(
+                  name: "Nested",
+                  onPressed: () {
+                    RapidNotify.confirmDialog(
+                      message: "Nested 1 Dialog",
+                      onConfirm: () {
+                        RapidNotify.dialog(message: "Nested 2");
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrOutlinedButton(
+                  onPressed: () {
+                    RapidPushNotifyManager.inst.notify(1);
+                  },
+                  name: 'Notify',
+                ),
+                FrOutlinedButton(
+                  onPressed: () {
+                    RapidPushNotifyManager.inst
+                        .notify(2, title: "Notification Title");
+                  },
+                  name: 'With Title',
+                ),
+                FrOutlinedButton(
+                  onPressed: () {
+                    RapidPushNotifyManager.inst.notify(3,
+                        title: "Notification Title", body: "Notification Body");
+                  },
+                  name: 'With Body',
+                ),
+                FrOutlinedButton(
+                  onPressed: () {
+                    RapidPushNotifyManager.inst.notify(
+                      4,
+                      title: "Special Offer",
+                      body: "If you buy more than 3 items, then will get 15% Discount & Free Shipping.",
+                      largeIconUrl: "https://banglafighter.com/static-files/bismillah/internship.jpg",
+                    );
+                  },
+                  name: 'With Image',
+                ),
+              ],
+            )
           ],
         ),
       ),
