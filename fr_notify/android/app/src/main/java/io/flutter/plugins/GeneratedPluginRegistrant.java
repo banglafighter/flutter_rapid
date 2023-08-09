@@ -1,6 +1,8 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin;
+import io.flutter.plugins.pathprovider.PathProviderPlugin;
 
 /**
  * Generated file. Do not edit.
@@ -10,6 +12,8 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    FlutterLocalNotificationsPlugin.registerWith(registry.registrarFor("com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin"));
+    PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {

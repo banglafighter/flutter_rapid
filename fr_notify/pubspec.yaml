@@ -10,12 +10,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_local_notifications: ^9.7.0
 
   fr_core:
     path: ../fr_core
-
   fr_ui:
     path: ../fr_ui
+  fr_common:
+    path: ../fr_common
+  fr_http:
+    path: ../fr_http
+
 
 dev_dependencies:
   flutter_test:
