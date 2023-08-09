@@ -2,17 +2,17 @@ import 'package:logger/logger.dart';
 import 'rapid_log_enum.dart';
 
 
-class RConsole {
-  static final RConsole _singleton = RConsole._internal();
+class RLog {
+  static final RLog _singleton = RLog._internal();
   late final Logger _logger;
   static LogLevel logLevel = LogLevel.all;
   static bool enableLog = false;
 
-  factory RConsole() {
+  factory RLog() {
     return _singleton;
   }
 
-  RConsole._internal() {
+  RLog._internal() {
     _logger = Logger(
       printer: PrettyPrinter(methodCount: 0, lineLength: 85),
     );
@@ -45,11 +45,11 @@ class RConsole {
     _logger.log(level, message, time: time, error: error, stackTrace: stackTrace);
   }
 
-  static RConsole _instance() {
-    return RConsole();
+  static RLog _instance() {
+    return RLog();
   }
 
-  static void log(dynamic message, { DateTime? time, Object? error, StackTrace? stackTrace}){
+  static void print(dynamic message, { DateTime? time, Object? error, StackTrace? stackTrace}){
     return _instance()._printLog(Level.debug, message, time: time, error: error, stackTrace: stackTrace);
   }
 

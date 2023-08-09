@@ -65,8 +65,8 @@ class FlutterRapidApp extends StatelessWidget {
   }
 
   Future<void> _miscellaneousInit() async {
-    RConsole.enableLog = _envConfig.enableLog;
-    RConsole.logLevel = _envConfig.logLevel;
+    RLog.enableLog = _envConfig.enableLog;
+    RLog.logLevel = _envConfig.logLevel;
   }
 
   @override
