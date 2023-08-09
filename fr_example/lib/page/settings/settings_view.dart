@@ -18,7 +18,96 @@ class SettingsView extends RapidView<SettingsLogic> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Settings"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(controller.globalState.themeIcon.value),
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.toggleThemeMode();
+                  },
+                  name: "Switch Theme".tr,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.changeLocale("bn_BD");
+                  },
+                  name: 'Bangla'.tr,
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.changeLocale("en_US");
+                  },
+                  name: 'English'.tr
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.changeLocale("ur_PK");
+                  },
+                  name: 'Urdu'.tr,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.showBusy(dismissible: true);
+                  },
+                  name: 'Show Busy'.tr,
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.hideBusy();
+                  },
+                  name: 'Hide Busy'.tr,
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    controller.globalState.showBusy();
+                    Future.delayed(Duration(seconds: 5), () {
+                      controller.globalState.hideBusy();
+                    });
+                  },
+                  name: 'Show Busy with block'.tr,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrTextButton(
+                  onPressed: () {
+                    RLog.print("Log Means Debug Log");
+                  },
+                  name: 'Print Log'.tr,
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    RLog.error("Print Error Log");
+                  },
+                  name: 'Error Log'.tr,
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    RLog.info("Print Info Log");
+                  },
+                  name: 'Info Log'.tr,
+                ),
+                FrTextButton(
+                  onPressed: () {
+                    RLog.warning("Print Warning Log");
+                  },
+                  name: 'Warning Log'.tr,
+                ),
+              ],
+            ),
           ],
         ),
       ),

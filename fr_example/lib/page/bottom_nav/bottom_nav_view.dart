@@ -34,7 +34,7 @@ class BottomNavView extends RapidView<BottomNavLogic> {
         initialRoute: HomeView.routeName,
       ),
       bottomNavigationBar: BottomNavManager(
-        navType: BottomNavType.convex,
+        navType: BottomNavType.material,
         items: getNavItems(),
         parentRouteKey: 12,
       ),
