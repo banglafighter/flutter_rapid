@@ -7,13 +7,22 @@ class BottomNavManager extends StatelessWidget {
   final BottomNavType navType;
   final BottomNavData? bottomNavData;
   final List<BottomNavItem> items;
-  final ValueChanged<int>? onTap;
+  final BottomNavTap? onTap;
+  final int currentIndex;
+  final RxInt _currentIndex = 0.obs;
+  final bool autoNavigation;
+  final bool enableBackInNav;
+  int? parentRouteKey;
 
-  const BottomNavManager({
-    this.navType = BottomNavType.system,
+  BottomNavManager({
+    this.navType = BottomNavType.material,
     this.bottomNavData,
     super.key,
     this.onTap,
+    this.currentIndex = 0,
+    this.autoNavigation = true,
+    this.enableBackInNav = false,
+    this.parentRouteKey,
     required this.items,
   });
 
@@ -21,12 +30,25 @@ class BottomNavManager extends StatelessWidget {
     if (navType == BottomNavType.convex) {
       return _getConvexNav();
     }
-    return _getSystemNav();
+    return _getMaterialNav();
   }
 
   void _onTapItem(int index) {
+    _currentIndex.value = index;
+    BottomNavItem navItem = items[index];
     if (onTap != null) {
-      onTap!(index);
+      onTap!(index, navItem.routeName);
+    }
+    if (autoNavigation) {
+      int? parentNavId;
+      if (parentRouteKey != null && navItem.enableParentRouteKey) {
+        parentNavId = parentRouteKey;
+      }
+      if (enableBackInNav || navItem.enableBackInNav) {
+        Get.toNamed(navItem.routeName, id: parentNavId);
+      } else {
+        Get.offAllNamed(navItem.routeName, id: parentNavId);
+      }
     }
   }
 
@@ -42,10 +64,11 @@ class BottomNavManager extends StatelessWidget {
     return ConvexAppBar(
       items: _items,
       onTap: _onTapItem,
+      initialActiveIndex: _currentIndex.value,
     );
   }
 
-  BottomNavigationBar _getSystemNav() {
+  BottomNavigationBar _getMaterialNav() {
     List<BottomNavigationBarItem> systemItems = [];
     for (BottomNavItem item in items) {
       systemItems.add(BottomNavigationBarItem(
@@ -59,11 +82,13 @@ class BottomNavManager extends StatelessWidget {
     return BottomNavigationBar(
       items: systemItems,
       onTap: _onTapItem,
+      currentIndex: _currentIndex.value,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return _getNav(navType);
+    _currentIndex.value = currentIndex;
+    return Obx(() => _getNav(navType));
   }
 }

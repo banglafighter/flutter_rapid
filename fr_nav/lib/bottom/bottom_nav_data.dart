@@ -7,17 +7,21 @@ class BottomNavItem {
   final Color? backgroundColor;
   final String? tooltip;
   final String routeName;
+  final bool enableBackInNav;
+  final bool enableParentRouteKey;
 
   BottomNavItem({
     required this.icon,
     required this.routeName,
     this.label,
+    this.enableBackInNav = false,
+    this.enableParentRouteKey = true,
     this.backgroundColor,
     this.tooltip,
   });
 }
 
 enum BottomNavType {
-  system,
+  material,
   convex,
 }

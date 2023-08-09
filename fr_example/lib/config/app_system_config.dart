@@ -1,5 +1,6 @@
 import 'package:flutter_rapid/flutter_rapid.dart';
 import '../example_app_registry.dart';
+import '../page/bottom_nav/bottom_nav_view.dart';
 import '../page/home/home_view.dart';
 import 'app_config.dart';
 
@@ -12,7 +13,7 @@ class AppSystemConfig extends RapidSystemConfig {
     "en_US": const Locale('en', 'US'),
     "ur_PK": const Locale('ur', 'PK')
   };
-  String? initialRoute = HomeView.routeName;
+  String? initialRoute = BottomNavView.routeName;
 
   List<RapidModuleRegistry> modules = [
     ExampleAppRegistry(),
