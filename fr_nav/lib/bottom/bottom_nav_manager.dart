@@ -36,9 +36,16 @@ class BottomNavManager extends StatelessWidget {
   void _onTapItem(int index) {
     _currentIndex.value = index;
     BottomNavItem navItem = items[index];
+
+    if (navItem.onTap != null) {
+      navItem.onTap!(index, navItem.routeName);
+      return;
+    }
+
     if (onTap != null) {
       onTap!(index, navItem.routeName);
     }
+
     if (autoNavigation) {
       int? parentNavId;
       if (parentRouteKey != null && navItem.enableParentRouteKey) {
