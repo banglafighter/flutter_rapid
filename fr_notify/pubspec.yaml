@@ -12,6 +12,10 @@ dependencies:
     sdk: flutter
   flutter_local_notifications: ^9.7.0
 
+  #  Firebase Dependencies
+  firebase_messaging: ^14.6.5
+  firebase_core: ^2.15.0
+
   fr_core:
     path: ../fr_core
   fr_ui:
