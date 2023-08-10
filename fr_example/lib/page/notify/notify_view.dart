@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_rapid/flutter_rapid.dart';
 import 'notify_i18n.dart';
 import 'notify_logic.dart';
@@ -117,7 +119,54 @@ class NotifyView extends RapidView<NotifyLogic> {
                   name: 'With Image',
                 ),
               ],
-            )
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FrOutlinedButton(
+                  onPressed: () {
+                    Map<String,dynamic> discount = {
+                      "action": "/discount",
+                      "message": "15% Discount of all product during the Ramadan."
+                    };
+                    RapidPushNotifyManager.inst.notify(
+                      1,
+                      title: "15% Discount",
+                      body: "15% Ramadan Discount.",
+                      payload: json.encode(discount),
+                    );
+                  },
+                  name: 'Notify Discount',
+                ),
+                FrOutlinedButton(
+                  onPressed: () {
+                    Map<String,dynamic> discount = {
+                      "action": "/summer-discount",
+                      "message": "You will get lots of Summer Discount. Visit our shop or see the discount pages."
+                    };
+                    RapidPushNotifyManager.inst.notify(
+                      1,
+                      title: "Summer Discount",
+                      body: "Lots of Summer discount available.",
+                      payload: json.encode(discount),
+                    );
+                  },
+                  name: 'Summer Discount',
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [],
+            ),
           ],
         ),
       ),

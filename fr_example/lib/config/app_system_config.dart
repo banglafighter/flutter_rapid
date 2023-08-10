@@ -1,4 +1,5 @@
 import 'package:flutter_rapid/flutter_rapid.dart';
+import '../common/app_push_notify_callback.dart';
 import '../example_app_registry.dart';
 import '../page/bottom_nav/bottom_nav_view.dart';
 import 'app_config.dart';
@@ -32,6 +33,6 @@ class AppSystemConfig extends RapidSystemConfig {
   }
 
   Future<void> onAppStartup() async {
-    await RapidPushNotifyManager.inst.init(androidIcon: "ic_launcher");
+    await RapidPushNotifyManager.inst.init(androidIcon: "ic_launcher", pushNotifyCallback: AppPushNotifyCallback());
   }
 }
