@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_rapid/flutter_rapid.dart';
 import 'notify_i18n.dart';
 import 'notify_logic.dart';
