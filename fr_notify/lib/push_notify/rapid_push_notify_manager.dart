@@ -21,24 +21,36 @@ class RapidPushNotifyManager {
 
   Future<void> init({String androidIcon = "push_notify_icon", String? groupKey, RapidPushNotifyCallback? pushNotifyCallback}) async {
     AndroidInitializationSettings initAndroidSettings = AndroidInitializationSettings(androidIcon);
-    IOSInitializationSettings initIosSettings = IOSInitializationSettings(requestSoundPermission: true, requestBadgePermission: true, requestAlertPermission: true, onDidReceiveLocalNotification: iOSNotificationReceived);
+    DarwinInitializationSettings initIosSettings = DarwinInitializationSettings(requestSoundPermission: true, requestBadgePermission: true, requestAlertPermission: true, onDidReceiveLocalNotification: iOSNotificationReceived);
     InitializationSettings initializationSettings = InitializationSettings(android: initAndroidSettings, iOS: initIosSettings);
 
     _groupKey = groupKey;
     _pushNotifyCallback = pushNotifyCallback;
 
-    await _notificationsPlugin.initialize(initializationSettings, onSelectNotification: onSelectNotification);
+    _notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
+    await _notificationsPlugin.initialize(initializationSettings, onDidReceiveNotificationResponse: onSelectNotification);
   }
 
   void iOSNotificationReceived(int id, String? title, String? body, String? payload) {
     if(_pushNotifyCallback != null){
-      _pushNotifyCallback!.iOSNotificationReceived(id, title, body, payload);
+      _pushNotifyCallback!.iOSNotificationReceived(RapidIosNotifyResponse(
+        id: id,
+        title: title,
+        payload: payload,
+        body: body,
+      ));
     }
   }
 
-  void onSelectNotification(String? payload) {
-    if(_pushNotifyCallback != null){
-      _pushNotifyCallback!.onSelectNotification(payload);
+  void onSelectNotification(NotificationResponse details) {
+    if (_pushNotifyCallback != null) {
+      _pushNotifyCallback!.onSelectNotification(RapidNotifyResponse(
+        id: details.id,
+        input: details.input,
+        payload: details.payload,
+        actionId: details.actionId,
+        type: details.notificationResponseType.name,
+      ));
     }
   }
 
@@ -104,7 +116,7 @@ class RapidPushNotifyManager {
       largeIcon: androidBitmap,
       styleInformation: styleInformation,
     );
-    IOSNotificationDetails iOSDetails = IOSNotificationDetails();
+    DarwinNotificationDetails iOSDetails = DarwinNotificationDetails();
 
     NotificationDetails notificationDetails = NotificationDetails(android: androidDetails, iOS: iOSDetails);
     return notificationDetails;
