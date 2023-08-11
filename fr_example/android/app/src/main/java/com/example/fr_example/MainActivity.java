@@ -1,4 +1,4 @@
-package com.example.fr_example;
+package com.hmtmcse.push_notification;
 
 import io.flutter.embedding.android.FlutterActivity;
 

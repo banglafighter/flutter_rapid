@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278665062504",
+    "project_id": "hmtm-firebase-tutorial",
+    "storage_bucket": "hmtm-firebase-tutorial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278665062504:android:d1942426fcd864e66333dd",
+        "android_client_info": {
+          "package_name": "com.hmtmcse.push_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278665062504-nkeh970ng7hqhprhv1oskgkvsre5bjc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRnE9XkJMh4JmgZCUAQbP9mtDRlOtTreQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278665062504-nkeh970ng7hqhprhv1oskgkvsre5bjc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

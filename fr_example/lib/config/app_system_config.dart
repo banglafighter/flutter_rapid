@@ -3,6 +3,18 @@ import '../common/app_push_notify_callback.dart';
 import '../example_app_registry.dart';
 import '../page/bottom_nav/bottom_nav_view.dart';
 import 'app_config.dart';
+import 'app_system_conf_helper.dart';
+
+@pragma('vm:entry-point')
+Future<void> _backgroundMessage(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  RapidRemoteMessage rapidMessage = RapidRemoteMessage().initFromFirebaseMessage(message);
+  RapidPushNotifyManager.inst.notify(
+    99,
+    title: "Background Message",
+    body: "Showing from Background Message Notify callback",
+  );
+}
 
 class AppSystemConfig extends RapidSystemConfig {
   String appTitle = "Flutter Rapid App";
@@ -33,6 +45,13 @@ class AppSystemConfig extends RapidSystemConfig {
   }
 
   Future<void> onAppStartup() async {
-    await RapidPushNotifyManager.inst.init(androidIcon: "ic_launcher", pushNotifyCallback: AppPushNotifyCallback());
+    await RapidPushNotifyManager.inst.init(
+      androidIcon: "ic_launcher",
+      pushNotifyCallback: AppPushNotifyCallback(),
+    );
+    await RapidFirebaseNotification.inst.init(
+      notifyCallback: AppFirebaseNotifyCallback()
+    );
+    RapidFirebaseNotification.onBackgroundMessageHandler(_backgroundMessage);
   }
 }
