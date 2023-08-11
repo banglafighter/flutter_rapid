@@ -1,11 +1,20 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fr_notify/fr_notify.dart';
 
 class RapidFirebaseNotification {
-  Future<void> init() async {
+  late RapidFirebaseNotifyCallback _notifyCallback;
+
+  static RapidFirebaseNotification get inst => RapidFirebaseNotification();
+
+  static void onBackgroundMessageHandler(BackgroundMessageHandler handler) {
+    FirebaseMessaging.onBackgroundMessage(handler);
+  }
+
+  Future<void> init({
+    required RapidFirebaseNotifyCallback notifyCallback,
+  }) async {
     await Firebase.initializeApp();
-    FirebaseMessaging.onBackgroundMessage(_backgroundMessage);
     FirebaseMessaging messaging = FirebaseMessaging.instance;
+    _notifyCallback = notifyCallback;
 
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
@@ -18,25 +27,22 @@ class RapidFirebaseNotification {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      _initAndroidMessageListener();
+      _initMessageListener();
     } else {
-      print('User declined or has not accepted permission');
+      RapidNotify.error("Please add Notification Permissions");
     }
   }
 
-  void _initAndroidMessageListener() {
+  void _initMessageListener() {
+    RapidRemoteMessage rapidRemoteMessage;
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
-      if (notification != null && android != null) {}
+      rapidRemoteMessage = RapidRemoteMessage();
+      _notifyCallback.onMessageOpenedInApp(rapidRemoteMessage);
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
-      if (notification != null && android != null) {}
+      rapidRemoteMessage = RapidRemoteMessage();
+      _notifyCallback.onForegroundMessage(rapidRemoteMessage);
     });
   }
-
-  Future<void> _backgroundMessage(RemoteMessage message) async {}
 }
