@@ -19,7 +19,34 @@ class RapidPushNotifyManager {
   String? _groupKey;
   RapidPushNotifyCallback? _pushNotifyCallback;
 
-  Future<void> init({String androidIcon = "push_notify_icon", String? groupKey, RapidPushNotifyCallback? pushNotifyCallback}) async {
+  Future<void> _initAndroidChannel(List<RapidPushNotifyChannel>? androidChannels) async {
+    if (androidChannels != null) {
+      for (RapidPushNotifyChannel channel in androidChannels) {
+        var androidChannel = AndroidNotificationChannel(
+          channel.id,
+          channel.name,
+          description: channel.description,
+          importance: channel.importance,
+          showBadge: channel.showBadge,
+          groupId: channel.groupId,
+          playSound: channel.playSound,
+          sound: channel.sound,
+          enableVibration: channel.enableVibration,
+          vibrationPattern: channel.vibrationPattern,
+          enableLights: channel.enableLights,
+          ledColor: channel.ledColor,
+        );
+        await _notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(androidChannel);
+      }
+    }
+  }
+
+  Future<void> init({
+    String androidIcon = "push_notify_icon",
+    String? groupKey,
+    RapidPushNotifyCallback? pushNotifyCallback,
+    List<RapidPushNotifyChannel>? androidChannels,
+  }) async {
     AndroidInitializationSettings initAndroidSettings = AndroidInitializationSettings(androidIcon);
     DarwinInitializationSettings initIosSettings = DarwinInitializationSettings(requestSoundPermission: true, requestBadgePermission: true, requestAlertPermission: true, onDidReceiveLocalNotification: iOSNotificationReceived);
     InitializationSettings initializationSettings = InitializationSettings(android: initAndroidSettings, iOS: initIosSettings);
@@ -27,6 +54,7 @@ class RapidPushNotifyManager {
     _groupKey = groupKey;
     _pushNotifyCallback = pushNotifyCallback;
 
+    await _initAndroidChannel(androidChannels);
     _notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
     await _notificationsPlugin.initialize(initializationSettings, onDidReceiveNotificationResponse: onSelectNotification);
   }
