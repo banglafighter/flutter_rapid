@@ -1,5 +1,5 @@
 import 'package:flutter_rapid/flutter_rapid.dart';
-import 'package:fr_example/page/home/home_view.dart';
+import '../home/home_view.dart';
 import '../external/external_view.dart';
 import '../notify/notify_view.dart';
 import '../settings/settings_view.dart';
