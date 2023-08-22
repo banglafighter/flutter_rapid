@@ -17,6 +17,7 @@ class BottomNavItem {
     required this.routeName,
     this.label,
     this.onTap,
+    this.activeIcon,
     this.enableBackInNav = false,
     this.enableParentRouteKey = true,
     this.backgroundColor,
