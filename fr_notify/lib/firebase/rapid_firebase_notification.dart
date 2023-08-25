@@ -9,6 +9,11 @@ class RapidFirebaseNotification {
     FirebaseMessaging.onBackgroundMessage(handler);
   }
 
+  static Future<RapidRemoteMessage> getBackgroundData(RemoteMessage message) async {
+    await Firebase.initializeApp();
+    return RapidRemoteMessage().initFromFirebaseMessage(message);
+  }
+
   Future<void> init({
     required RapidFirebaseNotifyCallback notifyCallback,
   }) async {

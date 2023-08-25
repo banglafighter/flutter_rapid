@@ -7,8 +7,7 @@ import 'app_system_conf_helper.dart';
 
 @pragma('vm:entry-point')
 Future<void> _backgroundMessage(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  RapidRemoteMessage rapidMessage = RapidRemoteMessage().initFromFirebaseMessage(message);
+  RapidRemoteMessage rapidMessage = await RapidFirebaseNotification.getBackgroundData(message);
   RapidPushNotifyManager.inst.notify(
     99,
     title: "Background Message",
