@@ -106,7 +106,7 @@ class NotifyView extends RapidView<NotifyLogic> {
                   },
                   name: 'With Body',
                 ),
-                FrOutlinedButton(
+                Expanded(child: FrOutlinedButton(
                   onPressed: () {
                     RapidPushNotifyManager.inst.notify(
                       4,
@@ -116,7 +116,7 @@ class NotifyView extends RapidView<NotifyLogic> {
                     );
                   },
                   name: 'With Image',
-                ),
+                ),)
               ],
             ),
             Row(
