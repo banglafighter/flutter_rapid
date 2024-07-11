@@ -48,7 +48,7 @@ class AppSystemConfig extends RapidSystemConfig {
       androidIcon: "ic_launcher",
       pushNotifyCallback: AppPushNotifyCallback(),
     );
-    await RapidFirebaseNotification.inst.init(
+    RapidFirebaseNotification.inst.init(
       notifyCallback: AppFirebaseNotifyCallback()
     );
     RapidFirebaseNotification.onBackgroundMessageHandler(_backgroundMessage);
