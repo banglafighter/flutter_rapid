@@ -55,7 +55,7 @@ class RapidPushNotifyManager {
     _pushNotifyCallback = pushNotifyCallback;
 
     await _initAndroidChannel(androidChannels);
-    _notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
+    _notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestNotificationsPermission();
     await _notificationsPlugin.initialize(initializationSettings, onDidReceiveNotificationResponse: onSelectNotification);
   }
 
