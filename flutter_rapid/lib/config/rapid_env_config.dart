@@ -7,4 +7,5 @@ class RapidEnvConfig extends RapidService {
   bool enableBanner = true;
   bool debug = true;
   String bannerTitle = 'DEBUG';
+  String baseUrl = "";
 }
