@@ -6,6 +6,7 @@ export 'package:fr_common/fr_common.dart';
 export 'package:fr_nav/fr_nav.dart';
 export 'package:fr_ui/fr_ui.dart';
 export 'package:fr_notify/fr_notify.dart';
+export 'package:fr_http/fr_http.dart';
 
 // Export Internal Classes
 export 'config/rapid_env_config.dart';
