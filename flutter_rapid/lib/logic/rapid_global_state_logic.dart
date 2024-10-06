@@ -7,6 +7,8 @@ class RapidGlobalStateLogic extends RapidLogic {
   late Map<String, Locale>? availableLocal;
   final isSystemBusy = false.obs;
   final isSystemBusyDismissible = false.obs;
+  final authUser = Rxn<Map<String, dynamic>>();
+  final currentUser = Rxn<Map<String, dynamic>>();
   String? initialRoute;
 
   void toggleThemeMode() {
