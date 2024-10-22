@@ -26,6 +26,8 @@ dependencies:
   fr_common:
     path: ../fr_common
 
+  chucker_flutter: ^1.8.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

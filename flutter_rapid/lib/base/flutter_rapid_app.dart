@@ -5,6 +5,7 @@ import '../logic/rapid_global_state_logic.dart';
 import '../widget/rapid_busy_widget.dart';
 import '../widget/splash_screen/rapid_splash_screen_logic.dart';
 import '../widget/splash_screen/rapid_splash_screen_view.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
 
 class FlutterRapidApp extends StatelessWidget {
   FlutterRapidApp({super.key});
@@ -67,6 +68,9 @@ class FlutterRapidApp extends StatelessWidget {
   Future<void> _miscellaneousInit() async {
     RLog.enableLog = _envConfig.enableLog;
     RLog.logLevel = _envConfig.logLevel;
+    ChuckerFlutter.showOnRelease = _envConfig.enableLog;
+    ChuckerFlutter.showNotification = _envConfig.enableLog;
+    ChuckerFlutter.isDebugMode = _envConfig.enableLog;
   }
 
   @override
@@ -108,6 +112,7 @@ class FlutterRapidApp extends StatelessWidget {
 
   Widget _getMaterialAppUI(BuildContext context) {
     return GetMaterialApp(
+      navigatorObservers: [ChuckerFlutter.navigatorObserver],
       home: _sysConf.home,
       initialRoute: getInitialRoute(),
       title: _sysConf.appTitle,
