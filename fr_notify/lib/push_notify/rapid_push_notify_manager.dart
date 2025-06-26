@@ -48,7 +48,7 @@ class RapidPushNotifyManager {
     List<RapidPushNotifyChannel>? androidChannels,
   }) async {
     AndroidInitializationSettings initAndroidSettings = AndroidInitializationSettings(androidIcon);
-    DarwinInitializationSettings initIosSettings = DarwinInitializationSettings(requestSoundPermission: true, requestBadgePermission: true, requestAlertPermission: true, onDidReceiveLocalNotification: iOSNotificationReceived);
+    DarwinInitializationSettings initIosSettings = DarwinInitializationSettings(requestSoundPermission: true, requestBadgePermission: true, requestAlertPermission: true);
     InitializationSettings initializationSettings = InitializationSettings(android: initAndroidSettings, iOS: initIosSettings);
 
     _groupKey = groupKey;
@@ -168,7 +168,7 @@ class RapidPushNotifyManager {
     StyleInformation? styleInformation,
     bool hideExpandedLargeIcon = false,
     RepeatInterval? repeatInterval,
-    bool androidAllowWhileIdle = false,
+    AndroidScheduleMode androidScheduleMode = AndroidScheduleMode.exact,
   }) async {
     NotificationDetails details = await _getNotifyDetails(
       channelId: channelId,
@@ -185,7 +185,7 @@ class RapidPushNotifyManager {
       hideExpandedLargeIcon: hideExpandedLargeIcon,
     );
     if(repeatInterval != null){
-      await _notificationsPlugin.periodicallyShow(id, title, body, repeatInterval, details, payload: payload, androidAllowWhileIdle: androidAllowWhileIdle);
+      await _notificationsPlugin.periodicallyShow(id, title, body, repeatInterval, details, payload: payload, androidScheduleMode: androidScheduleMode);
     }else{
       await _notificationsPlugin.show(id, title, body, details, payload: payload);
     }

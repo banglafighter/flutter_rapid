@@ -5,6 +5,7 @@ class RapidGlobalStateLogic extends RapidLogic {
   Rx<IconData> themeIcon = Rx(Icons.light_mode_outlined);
   final RapidSystemPreference systemPreference = Get.find();
   late Map<String, Locale>? availableLocal;
+  late Map<String, String>? availableFont;
   final isSystemBusy = false.obs;
   final isSystemBusyDismissible = false.obs;
   final authId = Rxn<dynamic>();
