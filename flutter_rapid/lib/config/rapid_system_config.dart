@@ -22,6 +22,7 @@ class RapidSystemConfig {
     "bn_BD": const Locale('bn', 'BD'),
     "en_US": const Locale('en', 'US')
   };
+  Map<String, String> availableFont = {};
 
   List<RapidModuleRegistry> modules = [];
 

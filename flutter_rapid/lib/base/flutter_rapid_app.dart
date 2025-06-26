@@ -75,7 +75,29 @@ class FlutterRapidApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RLog.error(Get.locale.toString());
     globalStateLogic.availableLocal = _sysConf.availableLocal;
+    globalStateLogic.availableFont = _sysConf.availableFont;
+
+    String? defaultFont = (globalStateLogic.availableFont?.isNotEmpty??false) ? globalStateLogic.availableFont?.entries.first.value: null;
+    String? customFont = globalStateLogic.availableFont?[Get.locale.toString()];
+
+    _sysConf.theme = _sysConf.theme.copyWith(
+      textTheme: _sysConf.theme.textTheme.apply(
+        fontFamily: customFont??defaultFont,
+      ),
+      primaryTextTheme: _sysConf.theme.primaryTextTheme.apply(
+        fontFamily: customFont??defaultFont,
+      ),
+    );
+    _sysConf.darkTheme = _sysConf.darkTheme.copyWith(
+      textTheme: _sysConf.theme.textTheme.apply(
+        fontFamily: customFont??defaultFont,
+      ),
+      primaryTextTheme: _sysConf.theme.primaryTextTheme.apply(
+        fontFamily: customFont??defaultFont,
+      ),
+    );
     return _getUI(context);
   }
 
@@ -104,7 +126,7 @@ class FlutterRapidApp extends StatelessWidget {
   }
 
   String? getInitialRoute() {
-    if(_sysConf.splashScreenData != null && _sysConf.splashScreenData.isEnableSplash && _sysConf.initialRoute != null){
+    if(_sysConf.splashScreenData.isEnableSplash && _sysConf.initialRoute != null){
       return RapidSplashScreenView.routeName;
     }
     return _sysConf.initialRoute;
