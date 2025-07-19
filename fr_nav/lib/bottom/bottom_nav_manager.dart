@@ -13,6 +13,7 @@ class BottomNavManager extends StatelessWidget {
   final bool autoNavigation;
   final bool enableBackInNav;
   final int? parentRouteKey;
+  final Color? backgroundColor;
 
   BottomNavManager({
     this.navType = BottomNavType.material,
@@ -23,6 +24,7 @@ class BottomNavManager extends StatelessWidget {
     this.autoNavigation = true,
     this.enableBackInNav = false,
     this.parentRouteKey,
+    this.backgroundColor,
     required this.items,
   });
 
@@ -71,6 +73,7 @@ class BottomNavManager extends StatelessWidget {
     return ConvexAppBar(
       items: _items,
       onTap: _onTapItem,
+      backgroundColor: backgroundColor
       initialActiveIndex: _currentIndex.value,
     );
   }
