@@ -73,7 +73,7 @@ class BottomNavManager extends StatelessWidget {
     return ConvexAppBar(
       items: _items,
       onTap: _onTapItem,
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor,
       initialActiveIndex: _currentIndex.value,
     );
   }
