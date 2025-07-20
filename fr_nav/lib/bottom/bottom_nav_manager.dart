@@ -93,6 +93,7 @@ class BottomNavManager extends StatelessWidget {
       items: systemItems,
       onTap: _onTapItem,
       currentIndex: _currentIndex.value,
+      backgroundColor: backgroundColor,
     );
   }
 
