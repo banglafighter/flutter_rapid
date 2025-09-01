@@ -32,6 +32,8 @@ class RapidSystemConfig {
   String currentEnv = "dev";
   Map<String, RapidEnvConfig> availableEnvironment = {};
 
+  GetObserver? navigatorObservers;
+
   initConfig(var env) {
     return Get.put<RapidEnvConfig>(env, permanent: true);
   }

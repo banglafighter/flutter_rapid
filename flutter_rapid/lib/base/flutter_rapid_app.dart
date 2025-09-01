@@ -134,7 +134,7 @@ class FlutterRapidApp extends StatelessWidget {
 
   Widget _getMaterialAppUI(BuildContext context) {
     return GetMaterialApp(
-      navigatorObservers: [ChuckerFlutter.navigatorObserver],
+      navigatorObservers: [ChuckerFlutter.navigatorObserver, if(_sysConf.navigatorObservers != null)_sysConf.navigatorObservers!],
       home: _sysConf.home,
       initialRoute: getInitialRoute(),
       title: _sysConf.appTitle,
