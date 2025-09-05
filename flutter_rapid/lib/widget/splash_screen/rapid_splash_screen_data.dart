@@ -8,6 +8,8 @@ class RapidSplashScreenData {
   // Only work if build in Splash Screen used
   Color backgroundColor = const Color.fromRGBO(26, 31, 26, 1.0);
   String logoPath = "assets/splash_screen_logo.png";
+  double? appLogoHeight = 82;
+  double? appLogoWidth = 82;
 
   String appName = "Rapid App";
   Color appNameColor = Colors.white;
@@ -15,9 +17,11 @@ class RapidSplashScreenData {
 
   String appVersion = "1.0.0";
   Color appVersionColor = Colors.white;
+  double? appVersionFontSize = 14.0;
 
   String copyRight = "Copyright © Flutter Rapid Application";
   Color copyRightColor = Colors.white;
+  double? copyRightFontSize = 13.0;
 
   RapidSplashScreenData setWidget(Widget? customView) {
     customView = customView;

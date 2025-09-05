@@ -24,15 +24,15 @@ class RapidSplashScreenView extends RapidView<RapidSplashScreenLogic> {
                   child: Hero(
                     tag: "splashScreenImage",
                     child: Container(
-                      height: 82,
-                      width: 82,
+                      height: splashScreenData.appLogoHeight,
+                      width: splashScreenData.appLogoWidth,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 1, vertical: 1),
                       child: Image.asset(
                         splashScreenData.logoPath,
                         filterQuality: FilterQuality.high,
-                        height: 82,
-                        width: 82,
+                        height: splashScreenData.appLogoHeight,
+                        width: splashScreenData.appLogoWidth,
                       ),
                     ),
                   ),
@@ -51,7 +51,7 @@ class RapidSplashScreenView extends RapidView<RapidSplashScreenLogic> {
                   splashScreenData.appVersion,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 14.0,
+                    fontSize: splashScreenData.appVersionFontSize,
                     color: splashScreenData.appVersionColor,
                   ),
                 ),
@@ -66,7 +66,7 @@ class RapidSplashScreenView extends RapidView<RapidSplashScreenLogic> {
                 splashScreenData.copyRight,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  fontSize: 13.0,
+                  fontSize: splashScreenData.copyRightFontSize,
                   color: splashScreenData.copyRightColor,
                 ),
               ),
