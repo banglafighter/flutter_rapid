@@ -1,0 +1,1 @@
+# Flutter Rapid Core System (fr_core)

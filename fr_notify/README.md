@@ -1,0 +1,1 @@
+# Flutter Rapid Notify (fr_notify)

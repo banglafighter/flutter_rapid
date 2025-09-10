@@ -1,0 +1,37 @@
+name: flutter_rapid
+description: Flutter Rapid is a Framework for Rapid Development
+version: 1.0.0
+homepage:
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_storage : ^2.1.1
+  chucker_flutter: ^1.8.3
+
+# Nested Package Dependencies
+  fr_core:
+    path: ../fr_core
+  fr_ui:
+    path: ../fr_ui
+  fr_notify:
+    path: ../fr_notify
+  fr_nav:
+    path: ../fr_nav
+  fr_http:
+    path: ../fr_http
+  fr_common:
+    path: ../fr_common
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+

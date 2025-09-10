@@ -1,0 +1,5 @@
+
+enum RapidSystemEnum {
+  locale,
+  themeMode,
+}

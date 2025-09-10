@@ -1,0 +1,33 @@
+name: fr_notify
+description: Flutter Rapid Notify (fr_notify)
+version: 1.0.0
+homepage:
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^18.0.1
+
+  #  Firebase Dependencies
+  firebase_core: ^3.11.0
+  firebase_messaging: ^15.2.2
+
+  fr_core:
+    path: ../fr_core
+  fr_ui:
+    path: ../fr_ui
+  fr_common:
+    path: ../fr_common
+  fr_http:
+    path: ../fr_http
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
